@@ -1,0 +1,5 @@
+package intro
+
+object SalapäranePilt {
+
+}
