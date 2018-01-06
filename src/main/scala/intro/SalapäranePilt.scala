@@ -10,7 +10,10 @@ object SalapäranePilt {
   case class State(var y: Int) {
     def jura: String = {
       if (y == random){
-        "Õige! Ta on võllas kõlkunud " + random + " korda."
+        val prevRand: Int = random
+        random = r.nextInt(28)
+        pakutud = 0
+        "Õige! Ta on võllas kõlkunud " + random + " korda. Nüüd paku eelmise mehikese pildil oleva kaksikvenna kõlkumiste arv!"
       }
       else {
         if (pakutud == 0){
@@ -26,7 +29,10 @@ object SalapäranePilt {
           "Nii keeruline see ennustamine ka ei ole. Paku veel üks kord."
         }
         else {
-          "Vale. Õige oli: " + random + ". Uueks äraarvamiseks palun refreshi veebilehte."
+          val prevRand: Int = random
+          random = r.nextInt(28)
+          pakutud = 0
+          "Vale. Õige oli: " + prevRand + ". Nüüd paku eelmise mehikese pildil oleva kaksikvenna kõlkumiste arv!"
         }
       }
     }
