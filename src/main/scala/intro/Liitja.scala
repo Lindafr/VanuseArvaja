@@ -17,15 +17,16 @@ object Liitja {
 
     // Seda võiks defineerida ülalolevate update funktsioonide abil:
     def handler(accessor: StateAccessPure[Int])(e: ReactEventFromInput): CallbackTo[Unit] = {
-      ???
+      accessor.setState(e.target.value.toInt)
     }
 
     def render(state: State) =
       div(
-        input.text(onChange ==> ((e: ReactEventFromInput) => $.setState(State(e.target.value.toInt, state.y)))),
-        input.text(onChange ==> ((e: ReactEventFromInput) => $.setState(???))),
+        input.text(value := state.x, onChange ==> handler(updateX)),
+        input.text(value := state.y, onChange ==> handler(updateY)),
+        button("increment", onClick --> updateY.modState(_ + 0)),
         br,
-        s"${state.x} + ${state.y} = ${state.x + state.y}"
+        s"${state.x} korda ${state.y} on ${state.x * state.y}"
       )
   }
 
