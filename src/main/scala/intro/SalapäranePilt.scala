@@ -13,7 +13,7 @@ object SalapäranePilt {
         val prevRand: Int = random
         random = r.nextInt(28)
         pakutud = 0
-        "Õige! Ta on võllas kõlkunud " + random + " korda. Nüüd paku eelmise mehikese pildil oleva kaksikvenna kõlkumiste arv!"
+        "Õige! Ta on võllas kõlkunud " + prevRand + " korda. Nüüd paku eelmise mehikese pildil oleva kaksikvenna kõlkumiste arv!"
       }
       else {
         if (pakutud == 0){
